@@ -28,7 +28,7 @@ void loop() {
     digitalWrite(LED_BUILTIN_AUX,1);
     delay (1000);
   }else{
-    state=(state+1)%2;
+    state++;
     int a = analogRead(pinTempSensor);
   
     float R = 1023.0/a-1.0;
@@ -40,7 +40,7 @@ void loop() {
     Serial.print(temperature);
     Serial.print("°C");
     Serial.print("\n\r");
-    digitalWrite(LED_BUILTIN,state);
+    digitalWrite(LED_BUILTIN,state%2);
   
     delay(10000);
   }
