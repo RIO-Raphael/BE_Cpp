@@ -5,28 +5,31 @@ template <class T> class Capteur {
   
   public :
   //Constructeur
-  Capteur();
+  Capteur(int p);
   //Destructeur
   //~Capteur();
   //Fonction
   virtual T get_value(void)=0; 
-  private :
+  protected :
+  int pin;
   
 };
 
-template <class V> class Ultrason : public class Capteur<V> {
+class Ultrason :  public Capteur<int> {
   public :
   //Constructeur
-  Ultrason();
+  Ultrason(int p);
   //Destructeur
   //~Capteur();
   //Fonction
   virtual int get_value(); 
+  
   private :
+  int duration();
   
 };
 
-/*class Mouvement : public class Capteur<float> {
+class Mouvement : public Capteur<float> {
   public :
   //Constructeur
   Mouvement();
@@ -35,7 +38,7 @@ template <class V> class Ultrason : public class Capteur<V> {
   //Fonction
   virtual float get_value(void); 
   private :
-};*/
+};
 
 template <class Y> class Actionneur {
   //Constructeur
