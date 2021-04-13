@@ -43,26 +43,34 @@ class Mouvement : public Capteur<float> {
 template <class Y> class Actionneur {
 
   public :
-  //Constructeur
-  Actionneur(int p);
+    //Constructeur
+    Actionneur(int p);
 
-  //Fonction
-  virtual void set_value(Y)=0;
+    //Fonction
+    virtual void set_value(Y)=0;
  
   protected :
-  int pin;
+    int pin;
 };
 
-class Moteur : public Actionneur<float> {
+class Actionneur_PWM :  public Actionneur<float>{
   public :
-  //Constructeur
-  Moteur(int p);
-  //Destructeur
-  //~Capteur();
-  //Fonction
-  virtual void set_value(float value); 
-  private :
-  int freq;
+    Actionneur_PWM (int p);
+    Actionneur_PWM (int p, int f);
+  protected :
+    int freq;
+    float duty_cycle;
+};
+
+class Moteur : public Actionneur_PWM {
+  public :
+    //Constructeur
+    Moteur(int p);
+    Moteur(int p,int f);
+    //Destructeur
+    //~Capteur();
+    //Fonction
+    virtual void set_value(float value); 
 };
 
 class ServoMoteur : public Actionneur<int> {

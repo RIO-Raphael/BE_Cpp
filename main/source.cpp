@@ -43,7 +43,12 @@ template <class Y> Actionneur <Y>:: Actionneur(int p){
    pin=p;
 }
 
-Moteur :: Moteur(int p): Actionneur(p){}
+//################## ACTIONNEURS ##################
+Actionneur_PWM :: Actionneur_PWM(int p):Actionneur(p),freq(-1),duty_cycle(0){}
+Actionneur_PWM :: Actionneur_PWM(int p, int f):Actionneur(p),freq(f),duty_cycle(0){}
+
+Moteur :: Moteur(int p): Actionneur_PWM(p){} 
+Moteur :: Moteur(int p, int f): Actionneur_PWM(p, f){}
 
 //Fonction
 void Moteur :: set_value(float value){
