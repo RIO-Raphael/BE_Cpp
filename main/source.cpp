@@ -3,13 +3,20 @@
 #include <string.h>
 #include <inttypes.h>
 #include "Arduino.h"
-//Constructeur
 
+template class Capteur <int>;
+template class Capteur <float>;
+template class Actionneur <int>;
+template class Actionneur <float>;
+
+//Constructeur
 template <class T> Capteur <T>:: Capteur(int p){
    pin=p;
 }
 
 Ultrason :: Ultrason(int p): Capteur(p){}
+
+//fonction
 
 int Ultrason :: get_value(){
     int RangeInCentimeters;
@@ -29,4 +36,21 @@ int Ultrason ::duration() {
     int duration;
     duration = pulseIn(pin, HIGH);
     return duration;
+}
+
+//Constructeur
+template <class Y> Actionneur <Y>:: Actionneur(int p){
+   pin=p;
+}
+
+Moteur :: Moteur(int p): Actionneur(p){}
+
+//Fonction
+void Moteur :: set_value(float value){
+  pinMode(pin, OUTPUT);
+  digitalWrite(pin, HIGH);
+  delay(100);
+  digitalWrite(pin, LOW);
+  delay(100);
+
 }
