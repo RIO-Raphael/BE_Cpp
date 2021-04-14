@@ -1,6 +1,6 @@
 //#define LED_BUILTIN 2
 //#define LED_BUILTIN_AUX 16
-
+#include "Servo.h"
 template <class T> class Capteur {
   
   public :
@@ -32,11 +32,12 @@ class Ultrason :  public Capteur<int> {
 class Mouvement : public Capteur<float> {
   public :
   //Constructeur
-  Mouvement();
+  Mouvement(int p);
   //Destructeur
   //~Capteur();
   //Fonction
   virtual float get_value(void); 
+  
   private :
 };
 
@@ -53,33 +54,26 @@ template <class Y> class Actionneur {
     int pin;
 };
 
-class Actionneur_PWM :  public Actionneur<float>{
-  public :
-    Actionneur_PWM (int p);
-    Actionneur_PWM (int p, int f);
-  protected :
-    int freq;
-    float duty_cycle;
-};
-
-class Moteur : public Actionneur_PWM {
+class Moteur : public Actionneur<int>{
   public :
     //Constructeur
     Moteur(int p);
-    Moteur(int p,int f);
     //Destructeur
     //~Capteur();
     //Fonction
-    virtual void set_value(float value); 
+    virtual void set_value(int value); 
+    void init_moteur(void);
 };
 
-class ServoMoteur : public Actionneur<int> {
+class ServoMoteur : public Actionneur<float> {
   public :
+  Servo servo;
   //Constructeur
   ServoMoteur(int p);
   //Destructeur
   //~Capteur();
   //Fonction
-  virtual void set_value(int value); 
+  virtual void set_value(float value);
   private :
+  float angle;    //comris entre 0 et 180°
 };
