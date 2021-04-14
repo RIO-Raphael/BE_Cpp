@@ -33,3 +33,10 @@
 
 #Test
 Test_Tempe_LED/
+
+#VSCode
+.vscode/
+*.code-workspace
+
+#DOC
+*.pdf
