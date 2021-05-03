@@ -6,8 +6,8 @@
 #define PIN_ULTRASON  D3
 
 #define PIN_SERVO    D5
-#define PIN_PIR_1     D6
-#define PIN_PIR_2     D6
+#define PIN_PIR_1     D1
+#define PIN_PIR_2     A0
 #define PIN_PIR_3     D9
 
 Ultrason ultrason(PIN_ULTRASON);
@@ -30,8 +30,7 @@ void balayage(void){
     delay(30);
   }
 }
-boolean isPeopleDetected()
-{
+boolean isPeopleDetected() {
     int sensorValue = digitalRead(PIN_PIR_1);
     if(sensorValue == HIGH)//if the sensor value is HIGH?
     {
@@ -41,6 +40,17 @@ boolean isPeopleDetected()
     {
         return false;//no,return false
     }
+
+    //ANALOG
+    /*
+    int sensor_read=analogRead(PIN_PIR_2);
+    Serial.println(sensor_read);
+    if (sensor_read>500){
+      return true;
+    }else{
+      return false;
+    }
+    */
 }
 
 void setup() {
@@ -51,10 +61,17 @@ void setup() {
   //pinMode(D8,OUTPUT);
 }
 
+int a=0;
 void loop() {
     //TEst PIR
-    Serial.println(" PIR :");
-    Serial.print(isPeopleDetected());
+    a++;
+    Serial.print(" PIRa :");
+    if (isPeopleDetected()){
+      Serial.println("true");
+    }else{
+      Serial.println("false");
+    }
+    Serial.println(a);
    
     
   
