@@ -14,8 +14,6 @@ Ultrason ultrason(PIN_ULTRASON);
 Mouvement pir_1(PIN_PIR_1);
 Mouvement pir_2(PIN_PIR_2);
 Mouvement pir_3(PIN_PIR_3);
-Moteur moteur_r(D8);
-Moteur moteur_l(D7);
 Robot robot;
 ServoMoteur servomoteur(PIN_SERVO);
 
@@ -36,14 +34,18 @@ void balayage(void){
 
 void setup() {
   // put your setup code here, to run once:
-  //Serial.println(" AVANT");
   Serial.begin(9600);
   delay(1000);
-  
   //pinMode(D8,OUTPUT);
 }
 
 void loop() {
+    //TEst PIR
+    Serial.println(" PIR :");
+    Serial.print(pir_1.get_value());
+    
+    
+  
   //Test trouver qq
   /*if(pir_1.get_value()){
     moteur_r.set_value(0);
@@ -58,8 +60,14 @@ void loop() {
     moteur_l.set_value(255);
     delay(1000);
   }*/
+    /*robot.avancer();
 
-    //balayage();
+    delay(1000);
+    robot.tourner_r();
+    delay(1000);
+    robot.arreter();
+    */
+    //balayage();   //Balayage du servomoteur
 
   
     //int RangeInCm;
@@ -88,7 +96,7 @@ void loop() {
     // set the servo position
     servomoteur.set_value(value);*/
 
-    //moteur_r.set_value(value_m);    //value_m entre 0 et 255
+    
     //value_m-=10;
     
     // wait for the servo to get there

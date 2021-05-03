@@ -110,22 +110,23 @@ Robot :: Robot(){
   moteur_l.init_moteur();
 
 }
-/*
-void avancer(){
+
+void Robot :: avancer(){
   moteur_r.set_value(true);
   moteur_l.set_value(true);
 }
   
-void arreter(){
+void Robot :: arreter(){
   moteur_r.set_value(false);
   moteur_l.set_value(false);
 }
 
-void tourner_r(){
-    
-  }
+void Robot :: tourner_r(){
+  moteur_r.set_value(false);
+  moteur_l.set_value(true);
+}
 
-void tourner_l(){
-    
-  }
-*/
+void Robot :: tourner_l(){
+  moteur_r.set_value(true);
+  moteur_l.set_value(false); 
+}
