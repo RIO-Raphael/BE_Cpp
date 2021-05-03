@@ -5,6 +5,9 @@
 #include <inttypes.h>
 #include "Arduino.h"
 
+#define PIN_MOTEUR_R    D8
+#define PIN_MOTEUR_L    D7
+
 template class Capteur <int>;
 template class Capteur <float>;
 template class Actionneur <int>;
@@ -56,24 +59,30 @@ template <class Y> Actionneur <Y>:: Actionneur(int p){
    pin=p;
 }
 
+Moteur :: Moteur() : Actionneur(-1){
+  
+}
+
 Moteur :: Moteur(int p): Actionneur(p){
   pinMode(pin, OUTPUT);
 }
 
 //Fonction
-void Moteur :: set_value(int value){
-  
-  analogWrite(pin,value);     //Value doit être comprise entre 0 et 255 (100% de la PWM)
-  /*
-  digitalWrite(pin, HIGH);
-  delay(100);
-  digitalWrite(pin, LOW);
-  delay(100);*/
+void Moteur :: set_value(bool b){
 
+  if(b){
+    digitalWrite(pin,HIGH);     
+  }else{
+    digitalWrite(pin,LOW);  
+  }
 }
 void Moteur :: init_moteur(void){
   pinMode(pin, OUTPUT);
   Serial.println("PIN OK ");
+}
+
+void Moteur :: set_pin(int p){
+  pin=p;
 }
 
 ServoMoteur :: ServoMoteur(int p): Actionneur(p){
@@ -91,3 +100,32 @@ void ServoMoteur :: set_value(float value){
   }
   servo.write(angle);       //Set angle du servo 
 }
+
+// Class Robot
+
+Robot :: Robot(){
+  moteur_r.set_pin(PIN_MOTEUR_R);
+  moteur_l.set_pin(PIN_MOTEUR_L);
+  moteur_r.init_moteur();
+  moteur_l.init_moteur();
+
+}
+/*
+void avancer(){
+  moteur_r.set_value(true);
+  moteur_l.set_value(true);
+}
+  
+void arreter(){
+  moteur_r.set_value(false);
+  moteur_l.set_value(false);
+}
+
+void tourner_r(){
+    
+  }
+
+void tourner_l(){
+    
+  }
+*/

@@ -4,9 +4,8 @@
 
 #define BAUDRATE      115200
 #define PIN_ULTRASON  D3
-#define PIN_MOTEUR_R    D8
-#define PIN_MOTEUR_L    D7
-#define PIN_SERVO    D7
+
+#define PIN_SERVO    D5
 #define PIN_PIR_1     A0
 #define PIN_PIR_2     D6
 #define PIN_PIR_3     D9
@@ -15,8 +14,9 @@ Ultrason ultrason(PIN_ULTRASON);
 Mouvement pir_1(PIN_PIR_1);
 Mouvement pir_2(PIN_PIR_2);
 Mouvement pir_3(PIN_PIR_3);
-Moteur moteur_r(PIN_MOTEUR_R);
-Moteur moteur_l(PIN_MOTEUR_L);
+Moteur moteur_r(D8);
+Moteur moteur_l(D7);
+Robot robot;
 ServoMoteur servomoteur(PIN_SERVO);
 
 int angle;   // variable to hold the angle for the servo motor
@@ -39,7 +39,7 @@ void setup() {
   //Serial.println(" AVANT");
   Serial.begin(9600);
   delay(1000);
-  //moteur_r.init_moteur();
+  
   //pinMode(D8,OUTPUT);
 }
 
@@ -59,7 +59,7 @@ void loop() {
     delay(1000);
   }*/
 
-    balayage();
+    //balayage();
 
   
     //int RangeInCm;
@@ -68,10 +68,12 @@ void loop() {
  /*
     RangeInCm = ultrason.get_value(); // two measurements should keep an interval
     Serial.print(RangeInCm);//0~400cm
+    
     Serial.println(" cm");
+    */
     delay(250);
-    moteur.set_value(2.0);
-*/
+    
+
    /* if(up){
       value++;
       if(value>180.0){
