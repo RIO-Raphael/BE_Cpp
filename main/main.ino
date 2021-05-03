@@ -6,7 +6,7 @@
 #define PIN_ULTRASON  D3
 
 #define PIN_SERVO    D5
-#define PIN_PIR_1     A0
+#define PIN_PIR_1     D6
 #define PIN_PIR_2     D6
 #define PIN_PIR_3     D9
 
@@ -30,20 +30,32 @@ void balayage(void){
     delay(30);
   }
 }
-
+boolean isPeopleDetected()
+{
+    int sensorValue = digitalRead(PIN_PIR_1);
+    if(sensorValue == HIGH)//if the sensor value is HIGH?
+    {
+        return true;//yes,return ture
+    }
+    else
+    {
+        return false;//no,return false
+    }
+}
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(BAUDRATE);
   delay(1000);
+  pinMode(PIN_PIR_1, INPUT);
   //pinMode(D8,OUTPUT);
 }
 
 void loop() {
     //TEst PIR
     Serial.println(" PIR :");
-    Serial.print(pir_1.get_value());
-    
+    Serial.print(isPeopleDetected());
+   
     
   
   //Test trouver qq
@@ -79,7 +91,7 @@ void loop() {
     
     Serial.println(" cm");
     */
-    delay(250);
+    delay(1000);
     
 
    /* if(up){

@@ -49,6 +49,7 @@ Mouvement :: Mouvement(int p):Capteur(p){
 
 //fonction
 float Mouvement :: get_value(void){
+  
   return digitalRead(pin);
 }
 
