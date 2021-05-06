@@ -18,9 +18,9 @@ class Robot {
         ServoMoteur servo;
     //Capteurs
         Ultrason ultrason;
-        Mouvement PIR1;
-        Mouvement PIR2;
-        Mouvement PIR3;
+        Mouvement pir1;
+        Mouvement pir2;
+        Mouvement pir3;
 
     //Constructeur
         Robot();

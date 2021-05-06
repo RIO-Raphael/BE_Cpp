@@ -6,9 +6,9 @@ Robot :: Robot() :
     moteur_l(PIN_MOTEUR_L),
     servo(PIN_SERVO),
     ultrason(PIN_ULTRASON),
-    PIR1(PIN_PIR_1),
-    PIR2(PIN_PIR_2),
-    PIR3(PIN_PIR_3)
+    pir1(PIN_PIR_1),
+    pir2(PIN_PIR_2),
+    pir3(PIN_PIR_3)
 {
   moteur_r.init_moteur();
   moteur_l.init_moteur();
@@ -35,5 +35,5 @@ void Robot :: tourner_l(){
 }
 
 int Robot :: robot_handler(){
-    
+
 }
