@@ -1,12 +1,17 @@
 // Class Robot
 #include "control.h"
 
-Robot :: Robot(){
-  moteur_r.set_pin(PIN_MOTEUR_R);
-  moteur_l.set_pin(PIN_MOTEUR_L);
+Robot :: Robot() :
+    moteur_r(PIN_MOTEUR_R),
+    moteur_l(PIN_MOTEUR_L),
+    servo(PIN_SERVO),
+    ultrason(PIN_ULTRASON),
+    PIR1(PIN_PIR_1),
+    PIR2(PIN_PIR_2),
+    PIR3(PIN_PIR_3)
+{
   moteur_r.init_moteur();
   moteur_l.init_moteur();
-
 }
 
 void Robot :: avancer(){
@@ -27,4 +32,8 @@ void Robot :: tourner_r(){
 void Robot :: tourner_l(){
   moteur_r.set_value(true);
   moteur_l.set_value(false); 
+}
+
+int Robot :: robot_handler(){
+    
 }

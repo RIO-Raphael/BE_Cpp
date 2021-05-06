@@ -41,13 +41,37 @@ int Ultrason ::duration() {
 
 
 Mouvement :: Mouvement(int p):Capteur(p){
+  if (p==A0){
+    digital=false;
+  }else{
+    digital=true;
+  }
+
   pinMode(p,INPUT);
 }
 
 //fonction
-float Mouvement :: get_value(void){
+bool Mouvement :: get_value(void){
   
-  return digitalRead(pin);
+  int sensorValue = digitalRead(pin);
+  if (digital){
+    //DIGITAL
+    if(sensorValue == HIGH){
+        return true;//yes,return ture
+    }else{
+      return false;//no,return false
+    }
+  }else{
+    //ANALOG
+    int sensor_read=analogRead(pin);
+    if (sensor_read>500){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+    
 }
 
 //################## ACTIONNEURS ##################

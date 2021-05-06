@@ -1,14 +1,7 @@
-#include "header.h"
 #include "math.h"
-#include "Servo.h"
+#include "control.h"
 
 #define BAUDRATE      115200
-#define PIN_ULTRASON  D3
-
-#define PIN_SERVO    D5
-#define PIN_PIR_1     D1
-#define PIN_PIR_2     A0
-#define PIN_PIR_3     D9
 
 Ultrason ultrason(PIN_ULTRASON);
 Mouvement pir_1(PIN_PIR_1);
@@ -63,72 +56,5 @@ void setup() {
 
 int a=0;
 void loop() {
-    //TEst PIR
-    a++;
-    Serial.print(" PIR :");
-    if (isPeopleDetected()){
-      Serial.println("true");
-    }else{
-      Serial.println("false");
-    }
-    Serial.println(a);
-   
-    
-  
-  //Test trouver qq
-  /*if(pir_1.get_value()){
-    moteur_r.set_value(0);
-    moteur_l.set_value(255);
-    delay(500);
-  }else if(pir_2.get_value()){
-    moteur_r.set_value(255);
-    moteur_l.set_value(0);
-    delay(500);
-  }else if(pir_3.get_value()){
-    moteur_r.set_value(0);
-    moteur_l.set_value(255);
-    delay(1000);
-  }*/
-    /*robot.avancer();
-
-    delay(1000);
-    robot.tourner_r();
-    delay(1000);
-    robot.arreter();
-    */
-    //balayage();   //Balayage du servomoteur
-
-  
-    //int RangeInCm;
-    //digitalWrite(D8,HIGH);
-    //Serial.println("The distance to obstacles in front is: ");
- /*
-    RangeInCm = ultrason.get_value(); // two measurements should keep an interval
-    Serial.print(RangeInCm);//0~400cm
-    
-    Serial.println(" cm");
-    */
-    delay(1000);
-    
-
-   /* if(up){
-      value++;
-      if(value>180.0){
-        up=false;
-      }
-    }else{
-      value--;
-      if(value<0.0){
-        up=true;
-      }
-    }
-    // set the servo position
-    servomoteur.set_value(value);*/
-
-    
-    //value_m-=10;
-    
-    // wait for the servo to get there
-    delay(15);
   
 }
