@@ -65,7 +65,7 @@ int a=0;
 void loop() {
     //TEst PIR
     a++;
-    Serial.print(" PIRa :");
+    Serial.print(" PIR :");
     if (isPeopleDetected()){
       Serial.println("true");
     }else{
