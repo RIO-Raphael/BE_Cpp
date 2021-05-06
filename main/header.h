@@ -2,7 +2,14 @@
 //#define LED_BUILTIN_AUX 16
 
 #include "Servo.h"
+#include <stdio.h>
+#include <string.h>
+#include <inttypes.h>
 #include "Arduino.h"
+#include "pins_arduino.h"
+
+#define PIN_MOTEUR_R    D8
+#define PIN_MOTEUR_L    D7
 
 template <class T> class Capteur {
   
@@ -83,15 +90,4 @@ class ServoMoteur : public Actionneur<float> {
   float angle;    //comris entre 0 et 180°
 };
 
-class Robot {
-  public : 
-  Moteur moteur_r;
-  Moteur moteur_l;
-  //Constructeur
-  Robot();
-  void avancer();
-  void arreter();
-  void tourner_r();
-  void tourner_l();
 
-}; 

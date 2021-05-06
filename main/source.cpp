@@ -5,9 +5,6 @@
 #include <inttypes.h>
 #include "Arduino.h"
 
-#define PIN_MOTEUR_R    D8
-#define PIN_MOTEUR_L    D7
-
 template class Capteur <int>;
 template class Capteur <float>;
 template class Actionneur <int>;
@@ -100,34 +97,4 @@ void ServoMoteur :: set_value(float value){
     angle=0.0;
   }
   servo.write(angle);       //Set angle du servo 
-}
-
-// Class Robot
-
-Robot :: Robot(){
-  moteur_r.set_pin(PIN_MOTEUR_R);
-  moteur_l.set_pin(PIN_MOTEUR_L);
-  moteur_r.init_moteur();
-  moteur_l.init_moteur();
-
-}
-
-void Robot :: avancer(){
-  moteur_r.set_value(true);
-  moteur_l.set_value(true);
-}
-  
-void Robot :: arreter(){
-  moteur_r.set_value(false);
-  moteur_l.set_value(false);
-}
-
-void Robot :: tourner_r(){
-  moteur_r.set_value(false);
-  moteur_l.set_value(true);
-}
-
-void Robot :: tourner_l(){
-  moteur_r.set_value(true);
-  moteur_l.set_value(false); 
 }
