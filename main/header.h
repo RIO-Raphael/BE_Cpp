@@ -1,9 +1,14 @@
 #include "Servo.h"
+#include "math.h"
 #include <stdio.h>
 #include <string.h>
 #include <inttypes.h>
 #include "Arduino.h"
 #include "pins_arduino.h"
+
+#define MAX_SERVO_ANGLE 30.0
+#define MIN_SERVO_ANGLE 0.0
+#define SERVO_PAS 5.0
 
 template <class T> class Capteur {
   
@@ -88,6 +93,7 @@ class ServoMoteur : public Actionneur<float> {
     //~Capteur();
     //Fonction
     virtual void set_value(float value);
+    float get_value(){return angle;};
     ServoMoteur operator++ (int);
     ServoMoteur operator-- (int);
   private :

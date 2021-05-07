@@ -35,7 +35,7 @@ class Robot {
             void arreter();
             void tourner_r();
             void tourner_l();
-            void recherche();
+            float recherche();
         
         //Handler
             int robot_handler();

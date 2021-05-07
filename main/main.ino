@@ -1,12 +1,8 @@
-#include "math.h"
 #include "control.h"
 
 #define BAUDRATE      115200
 
-int angle;   // variable to hold the angle for the servo motor
-float value=0.0;
-int value_m=100;
-bool up=true;
+Robot robot;
 
 void setup() {
   // put your setup code here, to run once:
@@ -18,5 +14,7 @@ void setup() {
 
 int a=0;
 void loop() {
-  
+  robot.servo.set_value(180.0);
+  //Serial.println(robot.robot_handler());
+  delay(10000);
 }

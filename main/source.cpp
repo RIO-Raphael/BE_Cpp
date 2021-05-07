@@ -114,23 +114,23 @@ ServoMoteur :: ServoMoteur(int p): Actionneur(p){
 //fonction
 void ServoMoteur :: set_value(float value){
   angle=value;
-  if(angle>180.0){        //Mise en place du saturateur
-    angle=180.0;
+  if(angle>MAX_SERVO_ANGLE){        //Mise en place du saturateur
+    angle=MAX_SERVO_ANGLE;
   }
-  if(angle<0.0){
-    angle=0.0;
+  if(angle<MIN_SERVO_ANGLE){
+    angle=MIN_SERVO_ANGLE;
   }
   servo.write(angle);       //Set angle du servo 
 }
 
 ServoMoteur ServoMoteur :: operator++(int){
-  angle+=5;
+  angle+=SERVO_PAS;
   set_value(angle);
   return *this;
 }
 
 ServoMoteur ServoMoteur :: operator--(int){
-  angle-=5;
+  angle-=SERVO_PAS;
   set_value(angle);
   return *this;
 }

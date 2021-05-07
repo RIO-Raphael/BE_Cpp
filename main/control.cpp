@@ -40,14 +40,40 @@ void Robot :: tourner_l(){
   moteur_l.set_value(false); 
 }
 
-void Robot :: recherche(){
+float Robot :: recherche(){
   int ultrason_mes=ultrason.get_value();
-  servo++;
+  int diff=0;
+  float angle_detect=-1;
+  old_mesure.clear();
+  mesure.clear();
+
+  servo.set_value(MIN_SERVO_ANGLE);
+  while (servo.get_value()<MAX_SERVO_ANGLE){
+    servo++;
+    old_mesure.push_back(ultrason.get_value());
+  }
+
+  servo.set_value(MIN_SERVO_ANGLE);
+  while (servo.get_value()<MAX_SERVO_ANGLE){
+    servo++;
+    mesure.push_back(ultrason.get_value());
+  }
+
+  for (int i=0; (i<mesure.size()) && (angle_detect=-1);i++){
+    diff=abs(mesure[i]-old_mesure[i]);
+    if (diff>MAX_RANGE_MODIF){
+      angle_detect=i*SERVO_PAS;
+    }
+  }
+
+  return angle_detect;
 }
 
 int Robot :: robot_handler(){
   int ultrason_mes=ultrason.get_value();
-
-
-
+  float angle_find=-1;
+  while (angle_find==-1){
+    angle_find=recherche();
+  }
+  return (int)angle_find;
 }
