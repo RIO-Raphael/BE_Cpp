@@ -12,6 +12,12 @@ Robot :: Robot() :
 {
   moteur_r.init_moteur();
   moteur_l.init_moteur();
+  //Test valeurs max
+  servo.set_value(180.0);
+  delay(100);
+  servo.set_value(0.0);
+  delay(100);
+  servo.set_value(90.0);
 }
 
 void Robot :: avancer(){
@@ -34,6 +40,14 @@ void Robot :: tourner_l(){
   moteur_l.set_value(false); 
 }
 
+void Robot :: recherche(){
+  int ultrason_mes=ultrason.get_value();
+  servo++;
+}
+
 int Robot :: robot_handler(){
+  int ultrason_mes=ultrason.get_value();
+
+
 
 }

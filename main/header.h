@@ -26,6 +26,11 @@ class Ultrason :  public Capteur<int> {
     //Destructeur
     //~Capteur();
     //Fonction
+    /*
+    @brief  : get the distance mesured by the ultrasonic sensor
+    @return : range in centimeter
+    @param  : none
+    */
     virtual int get_value(); 
   
   private :
@@ -38,9 +43,9 @@ class Mouvement : public Capteur<bool> {
     Mouvement(int p);
     //Méthodes
     /*
-    @brief get the value of the PIR sensor
+    @brief  : get the value of the PIR sensor
     @return : true if someone if detected and false otherwise
-    @param : none
+    @param  : none
     */
     virtual bool get_value(void); 
   
@@ -76,15 +81,17 @@ class Moteur : public Actionneur<bool>{
 
 class ServoMoteur : public Actionneur<float> {
   public :
-  Servo servo;
-  //Constructeur
-  ServoMoteur(int p);
-  //Destructeur
-  //~Capteur();
-  //Fonction
-  virtual void set_value(float value);
+    Servo servo;
+    //Constructeur
+    ServoMoteur(int p);
+    //Destructeur
+    //~Capteur();
+    //Fonction
+    virtual void set_value(float value);
+    ServoMoteur operator++ (int);
+    ServoMoteur operator-- (int);
   private :
-  float angle;    //comris entre 0 et 180°
+    float angle;    //comris entre 0 et 180°
 };
 
 

@@ -122,3 +122,15 @@ void ServoMoteur :: set_value(float value){
   }
   servo.write(angle);       //Set angle du servo 
 }
+
+ServoMoteur ServoMoteur :: operator++(int){
+  angle+=5;
+  set_value(angle);
+  return *this;
+}
+
+ServoMoteur ServoMoteur :: operator--(int){
+  angle-=5;
+  set_value(angle);
+  return *this;
+}

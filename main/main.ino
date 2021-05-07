@@ -8,15 +8,6 @@ float value=0.0;
 int value_m=100;
 bool up=true;
 
-
-//Def de function
-void balayage(void){
-  for (int i=30;i<150;i++){
-    servomoteur.set_value(float(i));
-    delay(30);
-  }
-}
-
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(BAUDRATE);
