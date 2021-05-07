@@ -5,10 +5,9 @@
 #include <inttypes.h>
 #include "Arduino.h"
 #include "pins_arduino.h"
+#include "constantes.h"
 
-#define MAX_SERVO_ANGLE 30.0
-#define MIN_SERVO_ANGLE 0.0
-#define SERVO_PAS 5.0
+
 
 template <class T> class Capteur {
   

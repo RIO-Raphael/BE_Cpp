@@ -48,15 +48,19 @@ float Robot :: recherche(){
   mesure.clear();
 
   servo.set_value(MIN_SERVO_ANGLE);
+  delay(1000);
   while (servo.get_value()<MAX_SERVO_ANGLE){
     servo++;
     old_mesure.push_back(ultrason.get_value());
+    delay(100);
   }
 
   servo.set_value(MIN_SERVO_ANGLE);
+  delay(1000);
   while (servo.get_value()<MAX_SERVO_ANGLE){
     servo++;
     mesure.push_back(ultrason.get_value());
+    delay(100);
   }
 
   for (int i=0; (i<mesure.size()) && (angle_detect=-1);i++){

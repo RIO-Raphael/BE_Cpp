@@ -4,6 +4,7 @@
 #include <string.h>
 #include <inttypes.h>
 #include "Arduino.h"
+#include "constantes.h"
 
 template class Capteur <int>;
 template class Capteur <float>;
@@ -120,11 +121,13 @@ void ServoMoteur :: set_value(float value){
   if(angle<MIN_SERVO_ANGLE){
     angle=MIN_SERVO_ANGLE;
   }
-  servo.write(angle);       //Set angle du servo 
+  servo.write(angle);       //Set angle du servo
+  delay(200); 
 }
 
 ServoMoteur ServoMoteur :: operator++(int){
   angle+=SERVO_PAS;
+  delay(100);
   set_value(angle);
   return *this;
 }

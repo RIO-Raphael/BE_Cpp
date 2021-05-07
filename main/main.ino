@@ -14,7 +14,17 @@ void setup() {
 
 int a=0;
 void loop() {
-  robot.servo.set_value(180.0);
+  //robot.servo.set_value(10.0);
   //Serial.println(robot.robot_handler());
+  robot.servo.set_value(MIN_SERVO_ANGLE);
+  robot.servo++;
+  robot.servo++;
+  robot.servo++;
+  delay(2000);
+  robot.servo.set_value(MAX_SERVO_ANGLE);
+  robot.servo--;
+  robot.servo--;
+  delay(2000);
+  robot.servo.set_value(SERVO_MIDDLE);
   delay(10000);
 }
