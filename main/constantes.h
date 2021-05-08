@@ -2,4 +2,5 @@
 #define SERVO_MIDDLE    73.0
 #define MAX_SERVO_ANGLE (SERVO_MIDDLE+SERVO_AMP)
 #define MIN_SERVO_ANGLE (SERVO_MIDDLE-SERVO_AMP)
-#define SERVO_PAS       20.0
+#define SERVO_DIV       5   
+#define SERVO_PAS       ((2*SERVO_AMP)/SERVO_DIV)
