@@ -122,12 +122,12 @@ void ServoMoteur :: set_value(float value){
     angle=MIN_SERVO_ANGLE;
   }
   servo.write(angle);       //Set angle du servo
-  delay(200); 
+  delay(100); 
 }
 
 ServoMoteur ServoMoteur :: operator++(int){
   angle+=SERVO_PAS;
-  delay(100);
+  delay(50);
   set_value(angle);
   return *this;
 }
