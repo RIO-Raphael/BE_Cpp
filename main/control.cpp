@@ -130,7 +130,7 @@ int Robot :: robot_handler(){
     approche();
   }else{
     c_recherche++;
-    //suivre();
+    suivre();
   }
   return (int)angle_find;
 }
