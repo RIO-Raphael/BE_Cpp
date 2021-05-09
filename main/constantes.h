@@ -12,7 +12,7 @@
 #define MOTOR_MIN_ANGLE 7 //en °
 
 //ROBOT
-#define TIME_RECHERCHE  50
+#define TIME_RECHERCHE  10
 #define DIST_TARGET     20
 #define MAX_RANGE_MODIF 20      //in cm
 

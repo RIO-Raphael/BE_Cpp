@@ -100,9 +100,9 @@ void Robot :: approche(){
 void Robot :: suivre(){
   int range=0;
   int ok=false;
+  servo.set_value(SERVO_MIDDLE);
+  servo--;
   for (int i=0; i<3 && !ok; i++){
-    servo.set_value(SERVO_MIDDLE-(i-1)*SERVO_AMP);
-    Serial.print(SERVO_MIDDLE-(i-1)*SERVO_AMP);
     delay(1000);
     delay(SERVO_TPS);
     range=ultrason.get_value();
@@ -112,6 +112,7 @@ void Robot :: suivre(){
       dist_follow=range;
       approche();
     }
+    servo++;
     delay(SERVO_TPS);
   }   
   
