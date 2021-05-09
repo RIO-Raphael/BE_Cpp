@@ -1,10 +1,16 @@
+//SERVO
 #define SERVO_AMP       65.0
 #define SERVO_MIDDLE    73.0
 #define MAX_SERVO_ANGLE (SERVO_MIDDLE+SERVO_AMP)
 #define MIN_SERVO_ANGLE (SERVO_MIDDLE-SERVO_AMP)
 #define SERVO_DIV       6   
 #define SERVO_PAS       (((2*SERVO_AMP)-1)/SERVO_DIV)
+#define SERVO_TPS       30
+
+//MOTEURS
 #define MOTOR_PAS_DELAY 7 //=1°
 #define MOTOR_MIN_ANGLE 7 //en °
 
+//ROBOT
 #define TIME_RECHERCHE  1000
+#define DIST_TARGET     30

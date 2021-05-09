@@ -43,7 +43,6 @@ void Robot :: tourner(int angle){
 }
 
 float Robot :: recherche(){
-  int tps=50;
   int ultrason_mes=ultrason.get_value();
   int diff=0;
   float angle_detect=-1;
@@ -68,10 +67,10 @@ float Robot :: recherche(){
 
     Serial.print("range="); Serial.println(range);
 
-    delay(tps);
+    delay(SERVO_TPS);
     servo++;
     i++;
-    delay(tps);
+    delay(SERVO_TPS);
   }
 
 
@@ -86,7 +85,14 @@ float Robot :: recherche(){
 }
 
 void Robot :: suivre(){
-  
+  for (int i=0; i<3; i++){
+    servo.set_value(SERVO_MIDDLE-(i-1)*SERVO_AMP);
+    delay(SERVO_TPS);
+    vect_follow.push_back(ultrason.get_value());
+    delay(SERVO_TPS);
+  }
+   
+
 }
 
 int Robot :: robot_handler(){
@@ -102,7 +108,7 @@ int Robot :: robot_handler(){
 
     //Approche
     avancer();
-    while (dist_follow){
+    while (dist_follow>DIST_TARGET){
       dist_follow=ultrason.get_value();
     } 
     arreter();
