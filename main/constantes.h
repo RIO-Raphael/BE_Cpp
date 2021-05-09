@@ -1,26 +1,27 @@
 //SERVO
-#define SERVO_AMP       65.0
-#define SERVO_MIDDLE    73.0
-#define MAX_SERVO_ANGLE (SERVO_MIDDLE+SERVO_AMP)
-#define MIN_SERVO_ANGLE (SERVO_MIDDLE-SERVO_AMP)
-#define SERVO_DIV       6   
-#define SERVO_PAS       (((2*SERVO_AMP)-1)/SERVO_DIV)
-#define SERVO_TPS       100
+#define SERVO_AMP           65.0
+#define SERVO_MIDDLE        73.0
+#define MAX_SERVO_ANGLE     (SERVO_MIDDLE+SERVO_AMP)
+#define MIN_SERVO_ANGLE     (SERVO_MIDDLE-SERVO_AMP)
+#define SERVO_DIV           6   
+#define SERVO_PAS           (((2*SERVO_AMP)-1)/SERVO_DIV)
+#define SERVO_TPS           100
 
 //MOTEURS
-#define MOTOR_PAS_DELAY 7 //=1°
-#define MOTOR_MIN_ANGLE 7 //en °
+#define MOTOR_PAS_DELAY     7       //=1°
+#define MOTOR_MIN_ANGLE     7       //en °
 
 //ROBOT
-#define TIME_RECHERCHE  10
-#define DIST_TARGET     20
-#define MAX_RANGE_MODIF 20      //in cm
+#define TIME_RECHERCHE      10
+#define DIST_TARGET         20
+#define MAX_RANGE_DETECT    15      //in cm. Seuil pour detecter un mouvemnt dans recherche()
+#define MAX_RANGE_MODIF     50      //in cm. Seuil pour suivre une personne
 
 //PINS
-#define PIN_ULTRASON    D3
-#define PIN_SERVO       D5
-#define PIN_PIR_1       D1
-#define PIN_PIR_2       A0
-#define PIN_PIR_3       D9
-#define PIN_MOTEUR_R    D8
-#define PIN_MOTEUR_L    D7
+#define PIN_ULTRASON        D3
+#define PIN_SERVO           D5
+#define PIN_PIR_1           D1
+#define PIN_PIR_2           A0
+#define PIN_PIR_3           D9
+#define PIN_MOTEUR_R        D8
+#define PIN_MOTEUR_L        D7

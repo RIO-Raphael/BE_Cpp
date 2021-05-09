@@ -61,7 +61,7 @@ float Robot :: recherche(){
       //Debug :
       Serial.print("mesure="); Serial.print(mesure[i]); Serial.print(" et old="); Serial.println(old_mesure[i]);
       diff=abs(mesure[i]-old_mesure[i]);
-      if (diff>MAX_RANGE_MODIF){
+      if (diff>MAX_RANGE_DETECT){
         angle_detect=MIN_SERVO_ANGLE+i*SERVO_PAS;
       }
     }
@@ -102,8 +102,8 @@ void Robot :: suivre(){
   int ok=false;
   servo.set_value(SERVO_MIDDLE);
   servo--;
+  delay(SERVO_DIV*SERVO_TPS);
   for (int i=0; i<3 && !ok; i++){
-    delay(1000);
     delay(SERVO_TPS);
     range=ultrason.get_value();
     if (abs(dist_follow-range)<MAX_RANGE_MODIF && range>DIST_TARGET){
