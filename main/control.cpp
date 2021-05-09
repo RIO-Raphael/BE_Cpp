@@ -2,13 +2,15 @@
 #include "control.h"
 
 Robot :: Robot() :
-    moteur_r(PIN_MOTEUR_R),
-    moteur_l(PIN_MOTEUR_L),
-    servo(PIN_SERVO),
-    ultrason(PIN_ULTRASON),
-    pir1(PIN_PIR_1),
-    pir2(PIN_PIR_2),
-    pir3(PIN_PIR_3)
+  dist_follow(0),
+  c_recherche(INT16_MAX),
+  moteur_r(PIN_MOTEUR_R),
+  moteur_l(PIN_MOTEUR_L),
+  servo(PIN_SERVO),
+  ultrason(PIN_ULTRASON),
+  pir1(PIN_PIR_1),
+  pir2(PIN_PIR_2),
+  pir3(PIN_PIR_3)
 {
   moteur_r.init_moteur();
   moteur_l.init_moteur();
@@ -26,14 +28,18 @@ void Robot :: arreter(){
   moteur_l.set_value(false);
 }
 
-void Robot :: tourner_r(){
-  moteur_r.set_value(false);
-  moteur_l.set_value(true);
-}
-
-void Robot :: tourner_l(){
-  moteur_r.set_value(true);
-  moteur_l.set_value(false); 
+void Robot :: tourner(int angle){
+  if (abs(angle)>MOTOR_MIN_ANGLE){
+    if (angle>0){
+      moteur_r.set_value(false);
+      moteur_l.set_value(true);
+    }else{
+      moteur_r.set_value(true);
+      moteur_l.set_value(false);
+    }
+    delay (angle*MOTOR_PAS_DELAY);
+    arreter();
+  }
 }
 
 float Robot :: recherche(){
@@ -70,6 +76,7 @@ float Robot :: recherche(){
 
 
   if (angle_detect!=-1){
+    dist_follow=range;
     servo.set_value(angle_detect);
     old_mesure.clear();
     mesure.clear();
@@ -81,8 +88,13 @@ float Robot :: recherche(){
 int Robot :: robot_handler(){
   int ultrason_mes=ultrason.get_value();
   float angle_find=-1;
-  while (angle_find==-1){
-    angle_find=recherche();
-  }  
+  //recherche
+  if (c_recherche>TIME_RECHERCHE){
+    while (angle_find==-1){
+      angle_find=recherche();
+      tourner(angle_find-SERVO_MIDDLE);
+      servo.set_value(SERVO_MIDDLE);
+    } 
+  } 
   return (int)angle_find;
 }

@@ -4,3 +4,7 @@
 #define MIN_SERVO_ANGLE (SERVO_MIDDLE-SERVO_AMP)
 #define SERVO_DIV       6   
 #define SERVO_PAS       (((2*SERVO_AMP)-1)/SERVO_DIV)
+#define MOTOR_PAS_DELAY 7 //=1°
+#define MOTOR_MIN_ANGLE 7 //en °
+
+#define TIME_RECHERCHE  1000

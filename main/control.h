@@ -33,8 +33,7 @@ class Robot {
         //Méthodes
             void avancer();
             void arreter();
-            void tourner_r();
-            void tourner_l();
+            void tourner(int angle);
             float recherche();
         
         //Handler
@@ -44,5 +43,8 @@ class Robot {
         vector<int> mesure;
         vector<int> old_mesure;
         vector<int> diff;
+
+        int dist_follow;
+        int c_recherche;
 
 }; 
