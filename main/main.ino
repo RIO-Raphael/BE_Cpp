@@ -21,7 +21,9 @@ void setup() {
 
 int a=0;
 void loop() {
+  digitalWrite(BUILTIN_LED,HIGH);
   robot.robot_handler();
   //Tempo
-  delay(10000);
+  digitalWrite(BUILTIN_LED,LOW);
+  delay(10);
 }

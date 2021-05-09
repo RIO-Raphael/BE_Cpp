@@ -5,7 +5,7 @@
 #define MIN_SERVO_ANGLE (SERVO_MIDDLE-SERVO_AMP)
 #define SERVO_DIV       6   
 #define SERVO_PAS       (((2*SERVO_AMP)-1)/SERVO_DIV)
-#define SERVO_TPS       40
+#define SERVO_TPS       50
 
 //MOTEURS
 #define MOTOR_PAS_DELAY 7 //=1°
