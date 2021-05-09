@@ -38,9 +38,7 @@ void Robot :: tourner(int angle){
       moteur_l.set_value(true);
       moteur_r.set_value(false);
     }
-    Serial.print("cc41");Serial.print(angle*MOTOR_PAS_DELAY);
     delay (abs(angle*MOTOR_PAS_DELAY));
-    Serial.print("cc43");
     arreter();
   }
 }
@@ -53,7 +51,7 @@ float Robot :: recherche(){
   mesure.clear();
 
   servo.set_value(MIN_SERVO_ANGLE);
-  delay(2*SERVO_TPS);
+  delay((SERVO_DIV+1)*SERVO_TPS);
   int i=0;
   int range=0;
   while (servo.get_value()<MAX_SERVO_ANGLE && angle_detect==-1){
@@ -93,6 +91,8 @@ void Robot :: approche(){
   avancer();
   while (dist_follow>DIST_TARGET){
     dist_follow=ultrason.get_value();
+    Serial.print("dist_follow=");Serial.println(dist_follow);
+    delay(SERVO_TPS);
   } 
   arreter();
 }
@@ -119,20 +119,15 @@ int Robot :: robot_handler(){
   int ultrason_mes=ultrason.get_value();
   float angle_find=-1;
   //recherche
-  Serial.print("C_recherche=");Serial.println(c_recherche);
   if (c_recherche>TIME_RECHERCHE){
     while (angle_find==-1){
       angle_find=recherche();
     }
     c_recherche=0;
-    Serial.println("cc124");
-    Serial.println(angle_find-SERVO_MIDDLE);
     tourner(angle_find-SERVO_MIDDLE);
-    Serial.println("cc126");
     servo.set_value(SERVO_MIDDLE);
     delay (SERVO_TPS);
     approche();
-    Serial.println("cc130");
   }else{
     c_recherche++;
     //suivre();
