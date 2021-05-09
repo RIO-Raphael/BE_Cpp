@@ -37,7 +37,7 @@ void Robot :: tourner_l(){
 }
 
 float Robot :: recherche(){
-  int tps=2000;
+  int tps=50;
   int ultrason_mes=ultrason.get_value();
   int diff=0;
   float angle_detect=-1;
@@ -70,6 +70,7 @@ float Robot :: recherche(){
 
 
   if (angle_detect!=-1){
+    servo.set_value(angle_detect);
     old_mesure.clear();
     mesure.clear();
   }
