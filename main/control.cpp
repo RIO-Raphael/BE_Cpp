@@ -31,11 +31,11 @@ void Robot :: arreter(){
 void Robot :: tourner(int angle){
   if (abs(angle)>MOTOR_MIN_ANGLE){
     if (angle>0){
-      moteur_r.set_value(false);
-      moteur_l.set_value(true);
-    }else{
-      moteur_r.set_value(true);
       moteur_l.set_value(false);
+      moteur_r.set_value(true);
+    }else{
+      moteur_l.set_value(true);
+      moteur_r.set_value(false);
     }
     delay (angle*MOTOR_PAS_DELAY);
     arreter();
@@ -121,13 +121,13 @@ int Robot :: robot_handler(){
       angle_find=recherche();
     }
     c_recherche=0;
-    tourner(angle_find-SERVO_MIDDLE);
+    //tourner(angle_find-SERVO_MIDDLE);
     servo.set_value(SERVO_MIDDLE);
     delay (SERVO_TPS);
-    approche();
+    //approche();
   }else{
     c_recherche++;
-    suivre();
+    //suivre();
   }
   return (int)angle_find;
 }
