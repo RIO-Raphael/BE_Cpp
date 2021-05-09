@@ -11,6 +11,10 @@ void setup() {
   pinMode(BUILTIN_LED, OUTPUT);
   digitalWrite(BUILTIN_LED,HIGH);
   
+  //Tempo
+  delay(10000);
+  digitalWrite(BUILTIN_LED,LOW);
+  delay(2000);
   //pinMode(D8,OUTPUT);
 }
 
@@ -19,12 +23,8 @@ void loop() {
   //robot.servo.set_value(10.0);
   // int angle=robot.robot_handler();
   // Serial.print("angle=");
-  // Serial.println(angle);yt
+  // Serial.println(angle);
 
-
-  // if (angle!=-1){
-    
-  // }
   //Tempo
   delay(8000);
 }

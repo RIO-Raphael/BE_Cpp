@@ -35,6 +35,7 @@ class Robot {
             void arreter();
             void tourner(int angle);
             float recherche();
+            void suivre();
         
         //Handler
             int robot_handler();

@@ -85,6 +85,10 @@ float Robot :: recherche(){
   return angle_detect;
 }
 
+void Robot :: suivre(){
+  
+}
+
 int Robot :: robot_handler(){
   int ultrason_mes=ultrason.get_value();
   float angle_find=-1;
@@ -94,7 +98,16 @@ int Robot :: robot_handler(){
       angle_find=recherche();
       tourner(angle_find-SERVO_MIDDLE);
       servo.set_value(SERVO_MIDDLE);
+    }
+
+    //Approche
+    avancer();
+    while (dist_follow){
+      dist_follow=ultrason.get_value();
     } 
-  } 
+    arreter();
+  }else{
+    suivre();
+  }
   return (int)angle_find;
 }
