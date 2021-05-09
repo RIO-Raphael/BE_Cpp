@@ -102,6 +102,8 @@ void Robot :: suivre(){
   int ok=false;
   for (int i=0; i<3 && !ok; i++){
     servo.set_value(SERVO_MIDDLE-(i-1)*SERVO_AMP);
+    Serial.print(SERVO_MIDDLE-(i-1)*SERVO_AMP);
+    delay(1000);
     delay(SERVO_TPS);
     range=ultrason.get_value();
     if (abs(dist_follow-range)<MAX_RANGE_MODIF && range>DIST_TARGET){
