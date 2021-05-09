@@ -118,9 +118,10 @@ int Robot :: robot_handler(){
   if (c_recherche>TIME_RECHERCHE){
     while (angle_find==-1){
       angle_find=recherche();
-      tourner(angle_find-SERVO_MIDDLE);
-      servo.set_value(SERVO_MIDDLE);
     }
+    tourner(angle_find-SERVO_MIDDLE);
+    servo.set_value(SERVO_MIDDLE);
+    delay (SERVO_TPS);
     approche();
   }else{
     suivre();

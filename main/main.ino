@@ -14,7 +14,8 @@ void setup() {
   //Tempo
   delay(10000);
   digitalWrite(BUILTIN_LED,LOW);
-  delay(2000);
+  delay(5000);
+  digitalWrite(BUILTIN_LED,HIGH);
   //pinMode(D8,OUTPUT);
 }
 
