@@ -3,16 +3,6 @@
 #include "pins_arduino.h"
 #include <vector>
 
-#define PIN_ULTRASON    D3
-#define PIN_SERVO       D5
-#define PIN_PIR_1       D1
-#define PIN_PIR_2       A0
-#define PIN_PIR_3       D9
-#define PIN_MOTEUR_R    D8
-#define PIN_MOTEUR_L    D7
-
-#define MAX_RANGE_MODIF 15      //in cm
-
 using namespace std;
 
 class Robot {
@@ -36,6 +26,7 @@ class Robot {
             void tourner(int angle);
             float recherche();
             void suivre();
+            void approche();
         
         //Handler
             int robot_handler();

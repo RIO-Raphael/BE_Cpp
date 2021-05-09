@@ -50,7 +50,7 @@ float Robot :: recherche(){
   mesure.clear();
 
   servo.set_value(MIN_SERVO_ANGLE);
-  delay(tps);
+  delay(SERVO_TPS);
   int i=0;
   int range=0;
   while (servo.get_value()<MAX_SERVO_ANGLE && angle_detect==-1){
@@ -84,15 +84,31 @@ float Robot :: recherche(){
   return angle_detect;
 }
 
+void Robot :: approche(){
+  //Approche
+    avancer();
+    while (dist_follow>DIST_TARGET){
+      dist_follow=ultrason.get_value();
+    } 
+    arreter();
+}
+
 void Robot :: suivre(){
-  for (int i=0; i<3; i++){
+  int range=0;
+  int ok=false;
+  for (int i=0; i<3 && !ok; i++){
     servo.set_value(SERVO_MIDDLE-(i-1)*SERVO_AMP);
     delay(SERVO_TPS);
-    vect_follow.push_back(ultrason.get_value());
+    range=ultrason.get_value();
+    if (abs(dist_follow-range)<MAX_RANGE_MODIF && range>DIST_TARGET){
+      //On se remet dans l'allignement
+      tourner(SERVO_MIDDLE-(i-1)*SERVO_AMP);
+      dist_follow=range;
+      approche();
+    }
     delay(SERVO_TPS);
-  }
-   
-
+  }   
+  
 }
 
 int Robot :: robot_handler(){
@@ -105,13 +121,7 @@ int Robot :: robot_handler(){
       tourner(angle_find-SERVO_MIDDLE);
       servo.set_value(SERVO_MIDDLE);
     }
-
-    //Approche
-    avancer();
-    while (dist_follow>DIST_TARGET){
-      dist_follow=ultrason.get_value();
-    } 
-    arreter();
+    approche();
   }else{
     suivre();
   }

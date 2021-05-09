@@ -20,11 +20,7 @@ void setup() {
 
 int a=0;
 void loop() {
-  //robot.servo.set_value(10.0);
-  // int angle=robot.robot_handler();
-  // Serial.print("angle=");
-  // Serial.println(angle);
-
+  //int angle=robot.robot_handler();
   //Tempo
-  delay(8000);
+  delay(500);
 }
