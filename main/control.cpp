@@ -108,7 +108,7 @@ void Robot :: suivre(){
     range=ultrason.get_value();
     if (abs(dist_follow-range)<MAX_RANGE_MODIF && range>DIST_TARGET){
       //On se remet dans l'allignement
-      tourner(SERVO_MIDDLE-(i-1)*SERVO_AMP);
+      tourner((i-1)*SERVO_AMP);
       dist_follow=range;
       approche();
     }
