@@ -16,7 +16,6 @@ void setup() {
   digitalWrite(BUILTIN_LED,LOW);
   delay(5000);
   digitalWrite(BUILTIN_LED,HIGH);
-  //pinMode(D8,OUTPUT);
 }
 
 int a=0;
