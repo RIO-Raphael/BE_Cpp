@@ -12,7 +12,7 @@ void setup() {
   digitalWrite(BUILTIN_LED,HIGH);
   
   //Tempo
-  delay(10000);
+  delay(5000);
   digitalWrite(BUILTIN_LED,LOW);
   delay(5000);
   digitalWrite(BUILTIN_LED,HIGH);
