@@ -21,7 +21,7 @@ void setup() {
 
 int a=0;
 void loop() {
-  //int angle=robot.robot_handler();
+  int angle=robot.robot_handler();
   //Tempo
   delay(500);
 }

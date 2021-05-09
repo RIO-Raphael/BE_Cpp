@@ -86,11 +86,12 @@ float Robot :: recherche(){
 
 void Robot :: approche(){
   //Approche
-    avancer();
-    while (dist_follow>DIST_TARGET){
-      dist_follow=ultrason.get_value();
-    } 
-    arreter();
+  c_recherche=0;
+  avancer();
+  while (dist_follow>DIST_TARGET){
+    dist_follow=ultrason.get_value();
+  } 
+  arreter();
 }
 
 void Robot :: suivre(){
@@ -119,11 +120,13 @@ int Robot :: robot_handler(){
     while (angle_find==-1){
       angle_find=recherche();
     }
+    c_recherche=0;
     tourner(angle_find-SERVO_MIDDLE);
     servo.set_value(SERVO_MIDDLE);
     delay (SERVO_TPS);
     approche();
   }else{
+    c_recherche++;
     suivre();
   }
   return (int)angle_find;
