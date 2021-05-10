@@ -16,6 +16,7 @@
 #define DIST_TARGET         20
 #define MAX_RANGE_DETECT    15      //in cm. Seuil pour detecter un mouvemnt dans recherche()
 #define MAX_RANGE_MODIF     50      //in cm. Seuil pour suivre une personne
+#define MAX_TIME_APPROCHE   1000
 
 //PINS
 #define PIN_ULTRASON        D3

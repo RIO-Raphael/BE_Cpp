@@ -89,7 +89,8 @@ void Robot :: approche(){
   //Approche
   c_recherche=0;
   avancer();
-  while (dist_follow>DIST_TARGET){
+  int time=millis(); 
+  while (dist_follow>DIST_TARGET && (millis()-time)<MAX_TIME_APPROCHE){
     dist_follow=ultrason.get_value();
     Serial.print("dist_follow=");Serial.println(dist_follow);
     delay(SERVO_TPS);
