@@ -112,11 +112,14 @@ void Robot :: suivre(){
     range=ultrason.get_value();
     vect_follow.push_back(range);
     if (vect_follow_old.size()!=0){
-      if (abs(dist_follow-range)<MAX_RANGE_MODIF && range>DIST_TARGET && abs(vect_follow_old[i]-range)>MAX_RANGE_DETECT){
+      if (abs(vect_follow_old[i]-range)<MAX_RANGE_MODIF && abs(vect_follow_old[i]-range)>MAX_RANGE_DETECT){
         //On se remet dans l'allignement
-        tourner((i-1)*SERVO_AMP);
+        tourner((i-1)*SERVO_PAS);
         dist_follow=range;
-        approche(VITESSE*dist_follow);
+        approche(VITESSE*range);
+        ok=true;
+        vect_follow_old.clear();
+        vect_follow.clear();
       }
     }
     delay(SERVO_TPS);
