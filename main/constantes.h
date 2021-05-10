@@ -14,8 +14,8 @@
 //ROBOT
 #define TIME_RECHERCHE      5
 #define DIST_TARGET         20
-#define MAX_RANGE_DETECT    15      //en cm. Seuil pour detecter un mouvemnt dans recherche()
-#define MAX_RANGE_MODIF     50      //en cm. Seuil pour suivre une personne
+#define MAX_RANGE_DETECT    5      //en cm. Seuil pour detecter un mouvemnt dans recherche()
+#define MAX_RANGE_MODIF     100      //en cm. Seuil pour suivre une personne
 #define MAX_TIME_APPROCHE   1500
 #define VITESSE             0.14     //en cm/ms (pour v_ref=5km/h)
 

@@ -116,7 +116,7 @@ void Robot :: suivre(){
         //On se remet dans l'allignement
         tourner((i-1)*SERVO_PAS);
         dist_follow=range;
-        approche(VITESSE*range);
+        approche(VITESSE*dist_follow);
         ok=true;
         vect_follow_old.clear();
         vect_follow.clear();
