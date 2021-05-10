@@ -60,7 +60,7 @@ float Robot :: recherche(){
     if (old_mesure.size()!=0){
       //Debug :
       Serial.print("mesure="); Serial.print(mesure[i]); Serial.print(" et old="); Serial.println(old_mesure[i]);
-      diff=abs(mesure[i]-old_mesure[i]);
+      diff=old_mesure[i]-mesure[i];
       if (diff>MAX_RANGE_DETECT){
         angle_detect=MIN_SERVO_ANGLE+i*SERVO_PAS;
       }
@@ -85,12 +85,14 @@ float Robot :: recherche(){
   return angle_detect;
 }
 
-void Robot :: approche(){
+void Robot :: approche(int time){
   //Approche
+  servo.set_value(SERVO_MIDDLE);
+  delay ((SERVO_DIV/2)*SERVO_TPS);
   c_recherche=0;
   avancer();
-  int time=millis(); 
-  while (dist_follow>DIST_TARGET && (millis()-time)<MAX_TIME_APPROCHE){
+  int acutal_time=millis(); 
+  while (dist_follow>DIST_TARGET && (millis()-acutal_time)<MAX_TIME_APPROCHE && (millis()-acutal_time)<time){
     dist_follow=ultrason.get_value();
     Serial.print("dist_follow=");Serial.println(dist_follow);
     delay(SERVO_TPS);
@@ -102,8 +104,8 @@ void Robot :: suivre(){
   int range=0;
   int ok=false;
   servo.set_value(SERVO_MIDDLE);
-  servo--;
   delay(SERVO_DIV*SERVO_TPS);
+  servo--;
   for (int i=0; i<3 && !ok; i++){
     delay(SERVO_TPS);
     range=ultrason.get_value();
@@ -111,16 +113,15 @@ void Robot :: suivre(){
       //On se remet dans l'allignement
       tourner((i-1)*SERVO_AMP);
       dist_follow=range;
-      approche();
+      approche(VITESSE*dist_follow);
     }
-    servo++;
     delay(SERVO_TPS);
+    servo++;
   }   
   
 }
 
 int Robot :: robot_handler(){
-  int ultrason_mes=ultrason.get_value();
   float angle_find=-1;
   //recherche
   if (c_recherche>TIME_RECHERCHE){
@@ -129,9 +130,7 @@ int Robot :: robot_handler(){
     }
     c_recherche=0;
     tourner(angle_find-SERVO_MIDDLE);
-    servo.set_value(SERVO_MIDDLE);
-    delay (SERVO_TPS);
-    approche();
+    approche(VITESSE*dist_follow);
   }else{
     c_recherche++;
     suivre();

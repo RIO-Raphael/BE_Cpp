@@ -26,7 +26,7 @@ class Robot {
             void tourner(int angle);
             float recherche();
             void suivre();
-            void approche();
+            void approche(int time);
         
         //Handler
             int robot_handler();
