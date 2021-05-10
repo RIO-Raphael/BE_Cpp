@@ -94,7 +94,6 @@ void Robot :: approche(int time){
   int acutal_time=millis(); 
   while (dist_follow>DIST_TARGET && (millis()-acutal_time)<MAX_TIME_APPROCHE && (millis()-acutal_time)<time){
     dist_follow=ultrason.get_value();
-    Serial.print("dist_follow=");Serial.println(dist_follow);
     delay(SERVO_TPS);
   } 
   arreter();
@@ -103,17 +102,22 @@ void Robot :: approche(int time){
 void Robot :: suivre(){
   int range=0;
   int ok=false;
+  vect_follow_old=vect_follow;
+
   servo.set_value(SERVO_MIDDLE);
   delay(SERVO_DIV*SERVO_TPS);
   servo--;
   for (int i=0; i<3 && !ok; i++){
     delay(SERVO_TPS);
     range=ultrason.get_value();
-    if (abs(dist_follow-range)<MAX_RANGE_MODIF && range>DIST_TARGET){
-      //On se remet dans l'allignement
-      tourner((i-1)*SERVO_AMP);
-      dist_follow=range;
-      approche(VITESSE*dist_follow);
+    vect_follow.push_back(range);
+    if (vect_follow_old.size()!=0){
+      if (abs(dist_follow-range)<MAX_RANGE_MODIF && range>DIST_TARGET && abs(vect_follow_old[i]-range)>MAX_RANGE_DETECT){
+        //On se remet dans l'allignement
+        tourner((i-1)*SERVO_AMP);
+        dist_follow=range;
+        approche(VITESSE*dist_follow);
+      }
     }
     delay(SERVO_TPS);
     servo++;

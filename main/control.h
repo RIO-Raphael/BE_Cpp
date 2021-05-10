@@ -36,7 +36,8 @@ class Robot {
         vector<int> old_mesure;
         vector<int> diff;
 
-        vector<int> vect_follow; //3 mesures droite + centre + gauche 
+        vector<int> vect_follow;        //3 mesures droite + centre + gauche 
+        vector<int> vect_follow_old;
 
         int dist_follow;
         int c_recherche;

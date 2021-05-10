@@ -18,6 +18,7 @@
 #define MAX_RANGE_MODIF     50      //en cm. Seuil pour suivre une personne
 #define MAX_TIME_APPROCHE   1500
 #define VITESSE             0.14     //en cm/ms (pour v_ref=5km/h)
+
 //PINS
 #define PIN_ULTRASON        D3
 #define PIN_SERVO           D5
