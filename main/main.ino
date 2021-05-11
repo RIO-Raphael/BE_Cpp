@@ -24,5 +24,5 @@ void loop() {
   robot.robot_handler();
   //Tempo
   digitalWrite(BUILTIN_LED,LOW);
-  delay(5000);
+  delay(10);
 }
