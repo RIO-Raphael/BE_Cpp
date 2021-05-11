@@ -4,7 +4,7 @@
 #define SERVO_MIDDLE        74.0
 #define MAX_SERVO_ANGLE     (SERVO_MIDDLE+SERVO_AMP)
 #define MIN_SERVO_ANGLE     (SERVO_MIDDLE-SERVO_AMP)
-#define SERVO_DIV           7   
+#define SERVO_DIV           9                           //angle de 15,5° par div          
 #define SERVO_PAS           (((2*SERVO_AMP)-1)/SERVO_DIV)
 #define SERVO_TPS           100
 

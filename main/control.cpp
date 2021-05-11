@@ -104,14 +104,13 @@ void Robot :: approche(int time){
 void Robot :: suivre(){
   int range=0;
   int ok=false;
+  int nb_boucle=5; //Forcémenet impair et inférieur à SERVO_DIV
   vect_follow_old=vect_follow;
   vect_follow.clear();
 
-  servo.set_value(SERVO_MIDDLE);
+  servo.set_value(SERVO_MIDDLE -((nb_boucle-1)/2)*SERVO_PAS);
   delay(SERVO_DIV*SERVO_TPS);
-  servo--;
-  servo--;
-  for (int i=0; i<6 && !ok; i++){
+  for (int i=0; i<nb_boucle && !ok; i++){
     delay(SERVO_TPS);
     range=ultrason.get_value();
 
@@ -135,7 +134,7 @@ void Robot :: suivre(){
 
       if (abs(vect_follow_old[i]-range)<MAX_RANGE_MODIF && abs(vect_follow_old[i]-range)>MAX_RANGE_DETECT){
         //On se remet dans l'allignement
-        tourner((i-1)*SERVO_PAS);
+        tourner((i-((nb_boucle+1)/2))*SERVO_PAS);
         dist_follow=range;
         approche(dist_follow/VITESSE);
         ok=true;
@@ -144,8 +143,7 @@ void Robot :: suivre(){
       }
     }
     delay(SERVO_TPS);
-    if (i<5){
-      servo++;
+    if (i<nb_boucle){
       servo++;
     }
   }   
