@@ -98,6 +98,8 @@ void Moteur :: set_value(bool b){
   }else{
     digitalWrite(pin,LOW);  
   }
+
+  
 }
 void Moteur :: init_moteur(void){
   pinMode(pin, OUTPUT);

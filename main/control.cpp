@@ -91,8 +91,10 @@ void Robot :: approche(int time){
   delay ((SERVO_DIV/2)*SERVO_TPS);
   c_recherche=0;
   avancer();
+  //DEBUG
+  Serial.print("time=");Serial.println(time);
   int acutal_time=millis(); 
-  while (dist_follow>DIST_TARGET && (millis()-acutal_time)<MAX_TIME_APPROCHE && (millis()-acutal_time)<time){
+  while (dist_follow>DIST_TARGET && (millis()-acutal_time)<time){
     dist_follow=ultrason.get_value();
     delay(SERVO_TPS);
   } 
@@ -103,27 +105,49 @@ void Robot :: suivre(){
   int range=0;
   int ok=false;
   vect_follow_old=vect_follow;
+  vect_follow.clear();
 
   servo.set_value(SERVO_MIDDLE);
   delay(SERVO_DIV*SERVO_TPS);
   servo--;
-  for (int i=0; i<3 && !ok; i++){
+  servo--;
+  for (int i=0; i<6 && !ok; i++){
     delay(SERVO_TPS);
     range=ultrason.get_value();
+
+    //DEBUG
+    if (i==0){
+        Serial.print("D :");
+      }else if (i==1){
+        Serial.print("C :");
+      }else{
+        Serial.print("G :");
+      }
+
     vect_follow.push_back(range);
+    Serial.print("range=");Serial.println(range);
+
     if (vect_follow_old.size()!=0){
+
+      //DEBUG
+      Serial.print("vect_follow_old[i]-range=");Serial.println(vect_follow_old[i]-range);
+
+
       if (abs(vect_follow_old[i]-range)<MAX_RANGE_MODIF && abs(vect_follow_old[i]-range)>MAX_RANGE_DETECT){
         //On se remet dans l'allignement
         tourner((i-1)*SERVO_PAS);
         dist_follow=range;
-        approche(VITESSE*dist_follow);
+        approche(dist_follow/VITESSE);
         ok=true;
         vect_follow_old.clear();
         vect_follow.clear();
       }
     }
     delay(SERVO_TPS);
-    servo++;
+    if (i<5){
+      servo++;
+      servo++;
+    }
   }   
   
 }
@@ -137,7 +161,10 @@ int Robot :: robot_handler(){
     }
     c_recherche=0;
     tourner(angle_find-SERVO_MIDDLE);
-    approche(VITESSE*dist_follow);
+    approche(dist_follow/VITESSE);
+    //Reset suivre vect
+    vect_follow_old.clear();
+    vect_follow.clear();
   }else{
     c_recherche++;
     suivre();
