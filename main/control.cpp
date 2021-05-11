@@ -109,7 +109,7 @@ void Robot :: suivre(){
   vect_follow.clear();
 
   servo.set_value(SERVO_MIDDLE -((nb_boucle-1)/2)*SERVO_PAS);
-  delay(SERVO_DIV*SERVO_TPS);
+  delay((SERVO_DIV/2)*SERVO_TPS);
   for (int i=0; i<nb_boucle && !ok; i++){
     delay(SERVO_TPS);
     range=ultrason.get_value();

@@ -1,7 +1,7 @@
 //SERVO
 //Valeurs en °
 #define SERVO_AMP           70.0
-#define SERVO_MIDDLE        74.0
+#define SERVO_MIDDLE        90.0
 #define MAX_SERVO_ANGLE     (SERVO_MIDDLE+SERVO_AMP)
 #define MIN_SERVO_ANGLE     (SERVO_MIDDLE-SERVO_AMP)
 #define SERVO_DIV           9                           //angle de 15,5° par div          
