@@ -163,14 +163,14 @@ void Robot :: recherche_PIR(){
     tourner(angle-SERVO_MIDDLE);
     dist_follow=ultrason.get_value();
     approche(dist_follow/VITESSE);
-    exit(-1)
+    exit(-1);
   }
 }
 
 int Robot :: robot_handler(){
   float angle_find=-1;
   //Vérification des PIR
-
+  recherche_PIR();
   //recherche
   if (c_recherche>TIME_RECHERCHE){
     angle_find=recherche();
