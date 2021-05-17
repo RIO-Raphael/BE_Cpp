@@ -157,7 +157,6 @@ void Robot :: recherche_PIR(){
     dist_follow=ultrason.get_value();
     approche(dist_follow/VITESSE);
     c_recherche=0;
-    exit(-1);
   }
 }
 

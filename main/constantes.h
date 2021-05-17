@@ -9,7 +9,7 @@
 #define SERVO_TPS           100
 
 //MOTEURS
-#define MOTOR_PAS_DELAY     5.7       //=1°
+#define MOTOR_PAS_DELAY     5.5       //=1°
 #define MOTOR_MIN_ANGLE     SERVO_PAS/2       //en °
 
 //ROBOT
