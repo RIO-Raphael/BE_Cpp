@@ -93,8 +93,8 @@ void Robot :: approche(int time){
   avancer();
   //DEBUG
   Serial.print("time=");Serial.println(time);
-  int acutal_time=millis(); 
-  while (dist_follow>DIST_TARGET && (millis()-acutal_time)<time){
+  int actual_time=millis(); 
+  while (dist_follow>DIST_TARGET && (millis()-actual_time)<time){
     dist_follow=ultrason.get_value();
     delay(SERVO_TPS);
   } 
