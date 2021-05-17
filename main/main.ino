@@ -21,7 +21,13 @@ void setup() {
 int a=0;
 void loop() {
   digitalWrite(BUILTIN_LED,HIGH);
-  robot.robot_handler();
+  try{
+    robot.robot_handler();
+  }catch (Robot_Exception e){
+    cout << e.Get_message();
+    exit(-1);
+  }
+ 
   //Tempo
   digitalWrite(BUILTIN_LED,LOW);
   delay(10);

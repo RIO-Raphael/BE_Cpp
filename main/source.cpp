@@ -23,6 +23,10 @@ Ultrason :: Ultrason(int p): Capteur(p){}
 int Ultrason :: get_value(){
     int RangeInCentimeters;
     RangeInCentimeters = duration() / 29 / 2;
+    if (RangeInCentimeters<MAX_RANGE_DETECT){
+      Robot_Exception e(0);
+      throw e;
+    }
     return RangeInCentimeters;
 }
 

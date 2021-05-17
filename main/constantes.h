@@ -1,4 +1,7 @@
 //SERVO
+#include <string>
+#include "exception.h"
+
 //Valeurs en °
 #define SERVO_AMP           70.0
 #define SERVO_MIDDLE        89.0
@@ -9,7 +12,7 @@
 #define SERVO_TPS           100
 
 //MOTEURS
-#define MOTOR_PAS_DELAY     5.5       //=1°
+#define MOTOR_PAS_DELAY     3       //=1°
 #define MOTOR_MIN_ANGLE     SERVO_PAS/2       //en °
 
 //ROBOT
@@ -31,3 +34,6 @@
 #define PIN_PIR_3           D6
 #define PIN_MOTEUR_R        D8
 #define PIN_MOTEUR_L        D7
+
+//Tab exception
+const string TAB_EXCEP[3]={"Le robot est dans mur","Le robot est perdu","Le robot est aveugle"};
