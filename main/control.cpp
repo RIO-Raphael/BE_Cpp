@@ -114,15 +114,6 @@ void Robot :: suivre(){
     delay(SERVO_TPS);
     range=ultrason.get_value();
 
-    //DEBUG
-    if (i==0){
-        Serial.print("D :");
-      }else if (i==1){
-        Serial.print("C :");
-      }else{
-        Serial.print("G :");
-      }
-
     vect_follow.push_back(range);
     Serial.print("range=");Serial.println(range);
 
