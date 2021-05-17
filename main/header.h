@@ -5,7 +5,7 @@
 #include <inttypes.h>
 #include "Arduino.h"
 #include "pins_arduino.h"
-#include "constantes.h"
+//#include "constantes.h"
 
 
 

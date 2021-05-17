@@ -5,6 +5,7 @@
 #include <inttypes.h>
 #include "Arduino.h"
 #include "constantes.h"
+#include "exception.h"
 
 template class Capteur <int>;
 template class Capteur <float>;

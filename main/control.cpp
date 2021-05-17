@@ -1,5 +1,6 @@
 // Class Robot
 #include "control.h"
+#include "constantes.h"
 
 Robot :: Robot() :
   dist_follow(0),

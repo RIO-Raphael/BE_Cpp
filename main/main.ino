@@ -1,4 +1,5 @@
 #include "control.h"
+#include "exception.h"
 
 #define BAUDRATE      115200
 
@@ -25,6 +26,7 @@ void loop() {
     robot.robot_handler();
   }catch (Robot_Exception e){
     cout << e.Get_message();
+    robot.arreter();
     exit(-1);
   }
  

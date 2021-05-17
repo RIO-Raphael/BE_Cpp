@@ -1,6 +1,8 @@
 //SERVO
+#include <iostream>
 #include <string>
-#include "exception.h"
+
+using namespace std;
 
 //Valeurs en °
 #define SERVO_AMP           70.0

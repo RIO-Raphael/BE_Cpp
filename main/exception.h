@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class Robot_Exception{
     public:
         Robot_Exception(int ID);
