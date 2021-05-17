@@ -55,6 +55,7 @@ float Robot :: recherche(){
   int i=0;
   int range=0;
   while (servo.get_value()<MAX_SERVO_ANGLE && angle_detect==-1){
+    recherche_PIR();
     range=ultrason.get_value();
     mesure.push_back(range);
     if (old_mesure.size()!=0){
@@ -111,6 +112,7 @@ void Robot :: suivre(){
   servo.set_value(SERVO_MIDDLE -((nb_boucle-1)/2)*SERVO_PAS);
   delay((SERVO_DIV/2)*SERVO_TPS);
   for (int i=0; i<nb_boucle && !ok; i++){
+    recherche_PIR();
     delay(SERVO_TPS);
     range=ultrason.get_value();
 
@@ -154,6 +156,7 @@ void Robot :: recherche_PIR(){
     tourner(angle-SERVO_MIDDLE);
     dist_follow=ultrason.get_value();
     approche(dist_follow/VITESSE);
+    c_recherche=0;
     exit(-1);
   }
 }
