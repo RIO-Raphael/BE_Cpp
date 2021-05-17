@@ -150,19 +150,38 @@ void Robot :: suivre(){
   
 }
 
+void Robot :: recherche_PIR(){
+  int angle = -1;
+  if (pir1.get_value()){
+    angle=ANGLE_PIR_1;
+  }else if (pir2.get_value()){
+    angle=ANGLE_PIR_2;
+  }else if (pir3.get_value()){
+    angle=ANGLE_PIR_3;
+  }
+  if (angle!=-1){
+    tourner(angle-SERVO_MIDDLE);
+    dist_follow=ultrason.get_value();
+    approche(dist_follow/VITESSE);
+    exit(-1)
+  }
+}
+
 int Robot :: robot_handler(){
   float angle_find=-1;
+  //Vérification des PIR
+
   //recherche
   if (c_recherche>TIME_RECHERCHE){
-    while (angle_find==-1){
-      angle_find=recherche();
+    angle_find=recherche();
+    if (angle_find!=-1){
+      c_recherche=0;
+      tourner(angle_find-SERVO_MIDDLE);
+      approche(dist_follow/VITESSE);
+      //Reset suivre vect
+      vect_follow_old.clear();
+      vect_follow.clear();
     }
-    c_recherche=0;
-    tourner(angle_find-SERVO_MIDDLE);
-    approche(dist_follow/VITESSE);
-    //Reset suivre vect
-    vect_follow_old.clear();
-    vect_follow.clear();
   }else{
     c_recherche++;
     suivre();

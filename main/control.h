@@ -25,6 +25,7 @@ class Robot {
             void arreter();
             void tourner(int angle);
             float recherche();
+            void recherche_PIR();
             void suivre();
             void approche(int time);
         

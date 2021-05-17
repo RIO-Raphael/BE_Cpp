@@ -41,7 +41,7 @@ int Ultrason ::duration() {
 }
 
 
-Mouvement :: Mouvement(int p):Capteur(p){
+Mouvement :: Mouvement(int p):Capteur(p),angle(90){
   if (p==A0){
     digital=false;
   }else{

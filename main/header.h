@@ -55,6 +55,7 @@ class Mouvement : public Capteur<bool> {
   
   private :
     bool digital;
+    int angle;
 };
 
 template <class Y> class Actionneur {
