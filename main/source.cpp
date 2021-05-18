@@ -46,6 +46,14 @@ int Ultrason ::duration() {
 }
 
 //fonction
+Mouvement :: Mouvement(int p):Capteur(p){
+  if (p==A0){
+    digital=false;
+  }else{
+    digital=true;
+  }
+}
+
 bool Mouvement :: get_value(void){
   
   int sensorValue = digitalRead(pin);
