@@ -10,6 +10,7 @@ Ce projet est un petit robot "suiveur". Pour cela nous avons utilisé :
 - 2 moteurs et leur roue
 - 1 batterie externe
 - 1 châssis fait sur mesure en contre-plaqué 5mm
+Veuillez vous référer au diagramme de classe pour connaître les interactions entre ces dernières.
 
 ## Charger le code sur la carte
 Pour charger notre code sur la carte ESP8266 nous avons utilisé l'IDE arduino et Visual Studio Code. Il est possible d'utiliser n'importe quel éditeur de texte. Dans les deux cas, il faut installer le compilateur arduino et le SDK correspondant à notre carte que nous avons pris sur [Github](https://github.com/esp8266/Arduino). Ensuite il faut configurer la carte avec laquelle on travaille et choisir **NodeMCU 1.0 (ESP-12E Module)** dans **Selected Board** et activer les exceptions en choisissant **Enabled** dans **Exceptions**. Il est aussi théoriquement possible d'augmenter l'_Upload Speed_ cependant notre carte ne fonctionnait qu'avec 115200 comme valeur maximale. Le code est prêt à être _uploadé_.
