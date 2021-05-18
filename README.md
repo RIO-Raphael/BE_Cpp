@@ -10,7 +10,7 @@ Ce projet est un petit robot "suiveur". Pour cela nous avons utilisé :
 - 2 moteurs et leur roue
 - 2 relais
 - 1 batterie externe
-- 1 châssis fait sur mesure en contre-plaqué 5mm
+- 1 châssis fait sur mesure en contre-plaqué 5mm.
 
 Veuillez vous référer au diagramme de classe pour connaître les interactions entre ces dernières.
 
