@@ -23,4 +23,4 @@ Une fois le code chargé sur la carte, le robot met 10 secondes à démarrer, ce
 Ensuite il tourne, avance et entre dans la phase de **suivi**. Dans cette phase, le robot détecte le mouvement en utilisant les PIR et en détectant si quelque chose à **avancer ou reculer** (des seuils sont mis en place pour prévenir les bugs potentiels) entre deux balayages. La plage de balayage est aussi réduite. 
 
 ## Diagramme de classes
-![Diagramme de classe](class_diagram.png?raw=true "Diagramme de classe")
+![Diagramme de classes](class_diagram.png?raw=true "Diagramme de classes")
