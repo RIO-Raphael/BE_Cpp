@@ -45,17 +45,6 @@ int Ultrason ::duration() {
     return duration;
 }
 
-
-Mouvement :: Mouvement(int p):Capteur(p),angle(90){
-  if (p==A0){
-    digital=false;
-  }else{
-    digital=true;
-  }
-
-  pinMode(p,INPUT);
-}
-
 //fonction
 bool Mouvement :: get_value(void){
   

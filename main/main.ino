@@ -27,6 +27,12 @@ void loop() {
   }catch (Robot_Exception e){
     cout << e.Get_message();
     robot.arreter();
+    for (int i=0; i<3; i++){
+      digitalWrite(BUILTIN_LED,LOW);
+      delay(500);
+      digitalWrite(BUILTIN_LED,LOW);
+      delay(500);
+    }
     exit(-1);
   }
  
