@@ -155,8 +155,7 @@ void Robot :: recherche_PIR(){
   }
   if (angle!=-1){
     tourner(angle-SERVO_MIDDLE);
-    dist_follow=ultrason.get_value();
-    approche(dist_follow/VITESSE);
+    delay(2000);
     c_recherche=0;
   }
 }
