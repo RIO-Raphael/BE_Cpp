@@ -155,6 +155,7 @@ void Robot :: recherche_PIR(){
   }
   if (angle!=-1){
     tourner(angle-SERVO_MIDDLE);
+    servo.set_value(SERVO_MIDDLE);
     delay(2000);
     c_recherche=0;
   }
